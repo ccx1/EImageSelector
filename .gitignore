@@ -11,4 +11,4 @@ build
 androidTest
 test
 gradle.properties
-
+.idea
