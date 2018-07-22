@@ -44,7 +44,7 @@ public class ImageSelectorActivity extends AppCompatActivity {
             @Override
             public void longClick(Photo photo) {
                 Intent intent = new Intent();
-                intent.putExtra("filename",photo.imageFilePath);
+                intent.putExtra("filename",  photo.imageFilePath);
                 setResult(Conts.PHOTO_SELECT_CODE,intent);
                 ImageSelectorActivity.this.finish();
             }
