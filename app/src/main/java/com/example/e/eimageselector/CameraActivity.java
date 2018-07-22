@@ -41,7 +41,7 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onResume() {
         super.onResume();
-        if (mCamera == null){
+        if (mCamera == null) {
             mCamera = Camera.open();
         }
     }
@@ -50,7 +50,7 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.sfv:
-                if (mCamera!= null) {
+                if (mCamera != null) {
                     mCamera.autoFocus(null);
                 }
                 break;
@@ -68,7 +68,7 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
         //设置图片保存格式
         parameters.setPictureFormat(ImageFormat.JPEG);
         //设置图片大小
-        parameters.setPreviewSize(480,720);
+        parameters.setPreviewSize(480, 720);
         //设置对焦
         parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
         //设置自动对焦
@@ -92,7 +92,7 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
     private void dealWithCameraData(byte[] data) {
         //带缓存区的文件输出流
         BufferedOutputStream fos = null;
-        String           tempStr = Environment.getExternalStorageDirectory() + File.separator;
+        String tempStr = Environment.getExternalStorageDirectory() + File.separator;
         String fileName = tempStr + System.currentTimeMillis() + ".jpg";
         try {
             //图片临时保存位置
@@ -111,8 +111,8 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
             bmRet.compress(Bitmap.CompressFormat.JPEG, 100, fos);
             fos.close();
             Intent intent = new Intent();
-            intent.putExtra("filename",fileName);
-            setResult(Conts.CAMERA_CODE,intent);
+            intent.putExtra("filename", fileName);
+            setResult(Conts.CAMERA_CODE, intent);
             CameraActivity.this.finish();
         } catch (Exception e) {
             e.printStackTrace();
@@ -173,7 +173,6 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
             e.printStackTrace();
         }
     }
-
 
 
     @Override
