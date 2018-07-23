@@ -21,15 +21,14 @@ import java.util.List;
 
 
 public class ImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private int mRotate;
     private Context mContext;
     private List<Photo> data;
     private Bitmap mBitmap;
 
-    public ImageAdapter(Context context, List<Photo> photoList, int rotate) {
+    public ImageAdapter(Context context, List<Photo> photoList) {
         this.data = photoList;
         this.mContext = context;
-        this.mRotate = rotate;
+
     }
 
     @NonNull
@@ -47,8 +46,6 @@ public class ImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         int             width    = wm.getDefaultDisplay().getWidth();
         final ImageView viewById = (ImageView) holder.itemView.findViewById(R.id.imageview);
         viewById.setLayoutParams(new LinearLayout.LayoutParams(width / 3,width/3));
-//        final RotateCenterCrop rotateCenterCrop = new RotateCenterCrop(mContext, mRotate);
-//        rotateCenterCrop.setWidthAndHeight(width / 3,width / 3);
         Glide.with(mContext).load(photo.imageFilePath).centerCrop().into(viewById);
         viewById.setOnClickListener(new View.OnClickListener() {
             @Override

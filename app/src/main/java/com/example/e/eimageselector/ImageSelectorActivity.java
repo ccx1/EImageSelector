@@ -38,7 +38,7 @@ public class ImageSelectorActivity extends AppCompatActivity {
         list.addAll(objects);
         RecyclerView viewById = (RecyclerView) findViewById(R.id.rv);
         viewById.setLayoutManager(new GridLayoutManager(this,3));
-        ImageAdapter imageAdapter = new ImageAdapter(ImageSelectorActivity.this,list,0);
+        ImageAdapter imageAdapter = new ImageAdapter(ImageSelectorActivity.this,list);
         viewById.setAdapter(imageAdapter);
         imageAdapter.setOnLongClick(new ImageAdapter.onLongClick() {
             @Override

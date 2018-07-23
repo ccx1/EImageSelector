@@ -20,5 +20,6 @@ public class PhotoUtils {
                 i--;
             }
         }
+        System.gc();
     }
 }

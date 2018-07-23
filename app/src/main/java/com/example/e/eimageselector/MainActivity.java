@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.camera).setOnClickListener(this);
         findViewById(R.id.select_image).setOnClickListener(this);
         rv.setLayoutManager(new GridLayoutManager(this, 3));
-        mImageAdapter = new ImageAdapter(this, mPhotoList, 0);
+        mImageAdapter = new ImageAdapter(this, mPhotoList);
         rv.setAdapter(mImageAdapter);
     }
 
