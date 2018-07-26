@@ -9,4 +9,5 @@ public interface Conts {
 
     int CAMERA_CODE = 1001;
     int PHOTO_SELECT_CODE = 1002;
+    int SYSTEM_CAMERA = 1003;
 }

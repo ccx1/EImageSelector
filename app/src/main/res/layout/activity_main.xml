@@ -11,7 +11,13 @@
         android:id="@+id/camera"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="点击拍照" />
+        android:text="点击自定义照相机拍照" />
+
+    <Button
+        android:id="@+id/camera2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="点击系统照相机拍照" />
 
     <Button
         android:id="@+id/select_image"

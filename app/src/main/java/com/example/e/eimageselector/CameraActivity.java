@@ -79,7 +79,7 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
                     mCamera.takePicture(null, null, new Camera.PictureCallback() {
                         @Override
                         public void onPictureTaken(byte[] data, Camera camera) {
-                            dealWithCameraData(data);
+                            PhotoUtils.dealWithCameraData(data,CameraActivity.this);
                         }
                     });
                 }
@@ -88,36 +88,6 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
     }
 
 
-    //保存拍照数据
-    private void dealWithCameraData(byte[] data) {
-        //带缓存区的文件输出流
-        BufferedOutputStream fos = null;
-        String tempStr = Environment.getExternalStorageDirectory() + File.separator;
-        String fileName = tempStr + System.currentTimeMillis() + ".jpg";
-        try {
-            //图片临时保存位置
-            Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
-            //定义matrix对象，他是用于对图片的各种后期处理(旋转、移动、放大、缩小)
-            Matrix matrix = new Matrix();
-            matrix.reset();
-            //把图片顺时针旋转90
-            matrix.postRotate(90);
-            //创建旋转后的图片
-            Bitmap bmRet = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
-            //回收原始图片
-            bitmap.recycle();
-            fos = new BufferedOutputStream(new FileOutputStream(fileName));
-            //保存图片数据
-            bmRet.compress(Bitmap.CompressFormat.JPEG, 100, fos);
-            fos.close();
-            Intent intent = new Intent();
-            intent.putExtra("filename", fileName);
-            setResult(Conts.CAMERA_CODE, intent);
-            CameraActivity.this.finish();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     // 当surfaceview创建的时候
     @Override
